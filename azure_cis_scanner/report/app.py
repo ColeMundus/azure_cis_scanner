@@ -250,7 +250,7 @@ def main(parser=None):
         mainparser.add_argument('--use-api-for-auth', required=True, help='path to data on disk')
         mainparser.add_argument('--scans-dir', default='/engagements/cis_test/scans', help='base dir of where to place or load files')
         mainparser.add_argument('--example-scan', action='store_true', help='allow running without credentials on example_scan data')
-
+        mainparser.add_argument('--port', default=5000)
         parser = mainparser.parse_args()
 
     # TODO figure out better way to get base dir or let user select in UI
@@ -266,7 +266,7 @@ def main(parser=None):
     app.config['SCANS_DATA_DIR'] = os.path.join(scans_dir, active_subscription_dir)
     app.config['ACCOUNTS'] = utils.get_accounts(scans_dir)
     #app.config['STATS'] = get_stats()
-    app.run(debug=True, host='0.0.0.0', use_reloader=False)
+    app.run(debug=True, host='0.0.0.0', port=parser.port, use_reloader=False)
 
 
 if __name__ == "__main__":
