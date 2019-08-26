@@ -105,6 +105,7 @@ def main():
     mainparser.add_argument('--refresh-sp-credentials', action='store_true', help='refresh service principal creds needed for keyvault')
     mainparser.add_argument('--loglevel', default='info', help='loglevel in ["debug", "info", "warning", "error"]')
     mainparser.add_argument('--example-scan', action='store_true', help='allow running without credentials on example_scan data')
+    mainparser.add_argument('--port', default=5000, help='specify port for webserver to run on')
     parser = mainparser.parse_args()
 
     loglevel = parser.loglevel
